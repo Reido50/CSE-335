@@ -121,6 +121,8 @@
     <ClInclude Include="RotatedBitmap.h" />
     <ClInclude Include="SpartyFactory.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Timeline.h" />
+    <ClInclude Include="TimelineDLG.h" />
     <ClInclude Include="ViewEdit.h" />
     <ClInclude Include="ViewTimeline.h" />
   </ItemGroup>
@@ -143,6 +145,8 @@
     <ClCompile Include="PolyDrawable.cpp" />
     <ClCompile Include="RotatedBitmap.cpp" />
     <ClCompile Include="SpartyFactory.cpp" />
+    <ClCompile Include="Timeline.cpp" />
+    <ClCompile Include="TimelineDLG.cpp" />
     <ClCompile Include="ViewEdit.cpp" />
     <ClCompile Include="ViewTimeline.cpp" />
   </ItemGroup>

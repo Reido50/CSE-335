@@ -183,6 +183,7 @@ void CViewEdit::OnMouseMove(UINT nFlags, CPoint point)
 void CViewEdit::UpdateObserver()
 {
 	Invalidate();
+    UpdateWindow();
 }
 
 // Doxygen sometimes gets confused by these message 

@@ -10,6 +10,7 @@
 
 #include <vector>
 #include <memory>
+#include "Timeline.h"
 
 class CPictureObserver;
 class CActor;
@@ -39,11 +40,17 @@ public:
 	* \param size The new picture size */
 	void SetSize(Gdiplus::Size size) { mSize = size; }
 
+	/** Get a pointer to the Timeline object
+	 * \returns Pointer to the Timeline object
+	 */
+	CTimeline* GetTimeline() { return &mTimeline; }
+
 	void AddObserver(CPictureObserver* observer);
 	void RemoveObserver(CPictureObserver* observer);
 	void UpdateObservers();
 	void AddActor(std::shared_ptr<CActor>);
 	void Draw(Gdiplus::Graphics* graphics);
+	void SetAnimationTime(double time);
 
 	/** Iterator that iterates over the actors in this picture */
 	class Iter
@@ -96,5 +103,8 @@ private:
 
 	/// The actors in this picture
 	std::vector<std::shared_ptr<CActor>> mActors;
+
+	/// The animation timeline
+	CTimeline mTimeline;
 };
 

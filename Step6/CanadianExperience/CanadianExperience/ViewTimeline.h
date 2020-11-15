@@ -47,6 +47,15 @@ public:
 private:
 	/// The main frame windows that used this view
 	CMainFrame* mMainFrame = nullptr;
+
+	/// Bitmap image for the pointer
+	std::unique_ptr<Gdiplus::Bitmap> mPointer;
+
+	/// Flag to indicate we are moving the pointer
+	bool mMovingPointer = false;
+public:
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 };
 
 

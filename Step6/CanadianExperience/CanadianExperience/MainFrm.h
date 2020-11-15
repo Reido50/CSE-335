@@ -78,6 +78,7 @@ public:
     afx_msg void OnUpdateEditMove(CCmdUI *pCmdUI);
     afx_msg void OnEditRotate();
     afx_msg void OnUpdateEditRotate(CCmdUI *pCmdUI);
+    afx_msg void OnEditTimelineproperties();
 };
 
 

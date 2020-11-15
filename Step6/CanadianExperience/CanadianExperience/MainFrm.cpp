@@ -11,6 +11,7 @@
 #include "Picture.h"
 #include "MainFrm.h"
 #include "PictureFactory.h"
+#include "TimelineDLG.h"
 
 using namespace std;
 
@@ -31,6 +32,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
     ON_UPDATE_COMMAND_UI(ID_EDIT_MOVE, &CMainFrame::OnUpdateEditMove)
     ON_COMMAND(ID_EDIT_ROTATE, &CMainFrame::OnEditRotate)
     ON_UPDATE_COMMAND_UI(ID_EDIT_ROTATE, &CMainFrame::OnUpdateEditRotate)
+    ON_COMMAND(ID_EDIT_TIMELINEPROPERTIES, &CMainFrame::OnEditTimelineproperties)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -243,3 +245,15 @@ void CMainFrame::Initialize()
     mViewTimeline->SetPicture(mPicture);
 }
 
+/** Handle the Edit/Timeline Properties menu option
+*/
+void CMainFrame::OnEditTimelineproperties()
+{
+    CTimelineDLG dlg;
+    dlg.SetTimeline(mPicture->GetTimeline());
+    if (dlg.DoModal() == IDOK)
+    {
+        dlg.Take();
+        mPicture->UpdateObservers();
+    }
+}
