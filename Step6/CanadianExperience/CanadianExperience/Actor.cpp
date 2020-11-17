@@ -6,11 +6,14 @@
 
 #include "pch.h"
 #include "Actor.h"
+#include "Picture.h"
 
 /** Constructor
 * \param name The actor name */
 CActor::CActor(const std::wstring& name) : mName(name)
 {
+    // Set the channel name
+    mChannel.SetName(name);
 }
 
 
@@ -86,4 +89,60 @@ void CActor::AddDrawable(std::shared_ptr<CDrawable> drawable)
 {
     mDrawablesInOrder.push_back(drawable);
     drawable->SetActor(this);
+}
+
+/** Add the channels for this actor to a timeline
+*/
+void CActor::SetTimeline(CTimeline* timeline)
+{
+    timeline->AddChannel(&mChannel);
+}
+
+/** Set a keyframe on an actor
+*/
+void CActor::SetKeyframe()
+{
+    for (auto drawable : mDrawablesInOrder)
+    {
+        drawable->SetKeyframe();
+    }
+
+    mChannel.SetKeyframe(mPosition);
+}
+
+/** brief Get a keyframe for an actor
+*/
+void CActor::GetKeyframe()
+{
+    for (auto drawable : mDrawablesInOrder)
+    {
+        drawable->GetKeyframe();
+    }
+
+    if (mChannel.IsValid())
+    {
+        mPosition = mChannel.GetPosition();
+    }
+}
+
+/**
+ * Set the picture link for this actor.
+ *
+ * This is telling the actor what
+ * picture to use.
+ *
+ * Also tells all child drawables what the timeline is.
+ * \param picture The picture we are using.
+ */
+void CActor::SetPicture(CPicture* picture)
+{
+    mPicture = picture;
+
+    // Set the timeline for all drawables. This links the channels to
+    // the timeline system.
+    for (auto drawable : mDrawablesInOrder)
+    {
+        drawable->SetTimeline(mPicture->GetTimeline());
+    }
+    SetTimeline(mPicture->GetTimeline());
 }

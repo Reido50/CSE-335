@@ -8,6 +8,10 @@
 
 #pragma once
 
+#include<vector>
+
+class CAnimChannel;
+
 /** This class implements a timeline that manages the animation
 *
 * A timeline consists of animation channels for different parts of our
@@ -23,6 +27,8 @@ public:
 	CTimeline(const CTimeline&) = delete;
 	/** \brief Assignment operator disabled */
 	void operator=(const CTimeline&) = delete;
+
+    void AddChannel(CAnimChannel* channel);
 
     /** Get the current frame.
      *
@@ -61,10 +67,7 @@ public:
      */
     double GetCurrentTime() const { return mCurrentTime; }
 
-    /** Set the current time
-     * \param currentTime new current animation time in seconds
-     */
-    void SetCurrentTime(double currentTime) { mCurrentTime = currentTime; }
+    void SetCurrentTime(double t);
 
 private:
 	/// Number of frames in the timeline
@@ -75,5 +78,8 @@ private:
 
 	/// Current time in the timeline
 	double mCurrentTime = 0;
+
+    /// List of all the animatino channels
+    std::vector<CAnimChannel*> mChannels;
 };
 

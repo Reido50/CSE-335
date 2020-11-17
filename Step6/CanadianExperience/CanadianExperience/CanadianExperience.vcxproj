@@ -103,6 +103,9 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorFactory.h" />
+    <ClInclude Include="AnimChannel.h" />
+    <ClInclude Include="AnimChannelAngle.h" />
+    <ClInclude Include="AnimChannelPosition.h" />
     <ClInclude Include="CanadianExperience.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="HaroldFactory.h" />
@@ -129,6 +132,9 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ActorFactory.cpp" />
+    <ClCompile Include="AnimChannel.cpp" />
+    <ClCompile Include="AnimChannelAngle.cpp" />
+    <ClCompile Include="AnimChannelPosition.cpp" />
     <ClCompile Include="CanadianExperience.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="HaroldFactory.cpp" />

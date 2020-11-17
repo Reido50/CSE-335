@@ -6,6 +6,8 @@
 
 #include "pch.h"
 #include "HeadTop.h"
+#include "Actor.h"
+#include "Timeline.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -53,6 +55,49 @@ void CHeadTop::Draw(Gdiplus::Graphics* graphics)
         DrawEye(graphics, TransformPoint(mRightEyePosition));
     }
     
+}
+
+/**
+ * Set the actor using this drawable
+ * \param actor Actor using this drawable
+ */
+void CHeadTop::SetActor(CActor* actor)
+{
+    CDrawable::SetActor(actor);
+
+    // Set the channel name
+    mChannel.SetName(actor->GetName() + L": HeadTop");
+}
+
+/** Add the channels for this drawable to a timeline
+ * \param timeline The timeline class.
+ */
+void CHeadTop::SetTimeline(CTimeline* timeline)
+{
+    CDrawable::SetTimeline(timeline);
+
+    timeline->AddChannel(&mChannel);
+}
+
+/** Set the keyframe based on the current status.
+*/
+void CHeadTop::SetKeyframe()
+{
+    CDrawable::SetKeyframe();
+
+    mChannel.SetKeyframe(GetPosition());
+}
+
+/** Get the current channel from the animation system.
+*/
+void CHeadTop::GetKeyframe()
+{
+    CDrawable::GetKeyframe();
+
+    if (mChannel.IsValid())
+    {
+        SetPosition(mChannel.GetPosition());
+    }
 }
 
 /** Transform a point from a location on the bitmap to

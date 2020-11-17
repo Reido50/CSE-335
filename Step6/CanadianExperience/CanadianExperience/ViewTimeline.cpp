@@ -14,6 +14,7 @@
 #include "Timeline.h"
 #include "MainFrm.h"
 #include "Picture.h"
+#include "Actor.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -145,7 +146,10 @@ BOOL CViewTimeline::OnEraseBkgnd(CDC* pDC)
 /** Handle the Edit>Set Keyframe menu option */
  void CViewTimeline::OnEditSetkeyframe()
  {
-     // TODO: Add your command handler code here
+     for (auto actor : *GetPicture())
+     {
+         actor->SetKeyframe();
+     }
  }
 
 

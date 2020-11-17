@@ -64,7 +64,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>pch;%(AdditionalDependencies);PictureObserver;Picture;Actor;Drawable;PolyDrawable;ImageDrawable;RotatedBitmap;Timeline</AdditionalDependencies>
+      <AdditionalDependencies>pch;%(AdditionalDependencies);PictureObserver;Picture;Actor;Drawable;PolyDrawable;ImageDrawable;RotatedBitmap;Timeline;AnimChannel;AnimChannelAngle;AnimChannelPosition</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -94,6 +94,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CActorTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CAnimChannelAngleTest.cpp">
       <SubType>
       </SubType>
     </ClCompile>

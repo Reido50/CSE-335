@@ -9,6 +9,7 @@
 #pragma once
 
 #include "ImageDrawable.h"
+#include "AnimChannelPosition.h"
 
 /**
 * Drawable class for the top of a stick-figure's head
@@ -32,6 +33,14 @@ public:
     virtual bool IsMovable() override { return true; }
 
     virtual void Draw(Gdiplus::Graphics* graphics) override;
+
+    virtual void SetActor(CActor* actor) override;
+
+    virtual void SetTimeline(CTimeline* timeline) override;
+
+    virtual void SetKeyframe() override;
+
+    virtual void GetKeyframe() override;
 
     /** Sets the right eyebrow position
     * \param pos New position of the right eyebrow */
@@ -78,5 +87,8 @@ private:
 
     CRotatedBitmap mLeftEye;        ///< Bitmap for the left eye
     CRotatedBitmap mRightEye;       ///< Bitmap for the right eye
+
+    /// The animation channel for animating movement of the actor
+    CAnimChannelPosition mChannel;
 };
 

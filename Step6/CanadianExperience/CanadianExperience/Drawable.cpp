@@ -7,6 +7,8 @@
 #include <cmath>
 #include "pch.h"
 #include "Drawable.h"
+#include "Actor.h"
+#include "Timeline.h"
 
  /**
   * Constructor
@@ -29,6 +31,9 @@ CDrawable::~CDrawable()
 void CDrawable::SetActor(CActor* actor)
 {
     mActor = actor;
+
+    // Set the channel name
+    mChannel.SetName(actor->GetName() + L":" + mName);
 }
 
 /**
@@ -73,6 +78,32 @@ void CDrawable::Move(Gdiplus::Point delta)
     else
     {
         mPosition = mPosition + delta;
+    }
+}
+
+/**
+* Add the channels for this drawable to a timeline
+* \param timeline The timeline class.
+*/
+void CDrawable::SetTimeline(CTimeline* timeline)
+{
+    timeline->AddChannel(&mChannel);
+}
+
+/** Set the keyframe based on the current status
+*/
+void CDrawable::SetKeyframe()
+{
+    mChannel.SetKeyframe(mRotation);
+}
+
+/** Get the current channel from the animation system
+*/
+void CDrawable::GetKeyframe()
+{
+    if (mChannel.IsValid())
+    {
+        mRotation = mChannel.GetAngle();
     }
 }
 

@@ -11,6 +11,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include "AnimChannelAngle.h"
 
 class CActor;
 
@@ -30,7 +31,7 @@ public:
     /** Assignment operator disabled */
     void operator=(const CDrawable&) = delete;
 
-    void SetActor(CActor* actor);
+    virtual void SetActor(CActor* actor);
     virtual void Draw(Gdiplus::Graphics* graphics) = 0;
     void Place(Gdiplus::Point offset, double rotate);
     void AddChild(std::shared_ptr<CDrawable> child);
@@ -42,6 +43,12 @@ public:
     virtual bool IsMovable() { return false; }
 
     void Move(Gdiplus::Point delta);
+
+    virtual void SetTimeline(CTimeline* timeline);
+
+    virtual void SetKeyframe();
+
+    virtual void GetKeyframe();
 
     /** Set the drawable position
      * \param pos The new drawable position*/
@@ -70,6 +77,10 @@ public:
     /** Set the parent
     * \param parent The new parent of this drawable */
     void SetParent(CDrawable* parent) { mParent = parent; }
+
+    /** The angle animation channel
+     * \returns Pointer to animation channel */
+    CAnimChannelAngle* GetAngleChannel() { return &mChannel; }
 
 protected:
     CDrawable(const std::wstring& name);
@@ -100,5 +111,8 @@ private:
 
     /// Child drawables to this drawable
     std::vector<std::shared_ptr<CDrawable>> mChildren;
+
+    /// The animation channel for animating the angle of this drawable
+    CAnimChannelAngle mChannel;
 };
 

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "Timeline.h"
+#include "AnimChannelAngle.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -91,5 +92,13 @@ namespace Testing
 			Assert::AreEqual(278, timeline.GetCurrentFrame());
 		}
 
+		TEST_METHOD(TestCTimelineAdd)
+		{
+			CTimeline timeline;
+			CAnimChannelAngle channel;
+
+			timeline.AddChannel(&channel);
+			Assert::IsTrue(&timeline == channel.GetTimeline());
+		}
 	};
 }

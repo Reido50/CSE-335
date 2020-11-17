@@ -12,6 +12,7 @@
 #include <vector>
 #include <memory>
 #include "Drawable.h"
+#include "AnimChannelPosition.h"
 
 class CPicture;
 
@@ -39,6 +40,12 @@ public:
     void Draw(Gdiplus::Graphics* graphics);
     std::shared_ptr<CDrawable> HitTest(Gdiplus::Point pos);
     void AddDrawable(std::shared_ptr<CDrawable> drawable);
+    
+    virtual void SetTimeline(CTimeline* timeline);
+
+    virtual void SetKeyframe();
+
+    virtual void GetKeyframe();
 
     /** Get the actor name
      * \returns Actor name */
@@ -72,9 +79,11 @@ public:
     * \returns Picture the actor is in */
     CPicture* GetPicture() { return mPicture; }
 
-    /** Set the actor picture
-    * \param picture The new picture the actor is in */
-    void SetPicture(CPicture* picture) { mPicture = picture; }
+    void SetPicture(CPicture* picture);
+
+    /** The position animation channel
+     * \returns Pointer to position channel */
+    CAnimChannelPosition* GetPositionChannel() { return &mChannel; }
 
 private:
     /// Name of the actor
@@ -97,5 +106,8 @@ private:
 
     /// The picture the actor is in
     CPicture* mPicture = nullptr;
+
+    /// The animation channel for animating movement of the actor
+    CAnimChannelPosition mChannel;
 };
 

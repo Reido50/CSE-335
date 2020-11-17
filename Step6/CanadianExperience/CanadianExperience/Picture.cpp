@@ -75,5 +75,11 @@ void CPicture::Draw(Gdiplus::Graphics* graphics)
 void CPicture::SetAnimationTime(double time)
 {
 	mTimeline.SetCurrentTime(time);
+
+	for (auto actor : mActors)
+	{
+		actor->GetKeyframe();
+	}
+
 	UpdateObservers();
 }
