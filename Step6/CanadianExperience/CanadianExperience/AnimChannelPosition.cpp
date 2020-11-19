@@ -36,6 +36,9 @@ void CAnimChannelPosition::SetKeyframe(Point position)
 	InsertKeyframe(keyframe);
 }
 
+/** Interpolate position
+* \param t T value
+*/
 void CAnimChannelPosition::Tween(double t)
 {
 	Point a = mKeyframe1->GetPosition();

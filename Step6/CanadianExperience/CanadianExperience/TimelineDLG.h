@@ -4,6 +4,7 @@
 
 // CTimelineDLG dialog
 
+/** Class for handling the timeline dialog box */
 class CTimelineDLG : public CDialog
 {
 	DECLARE_DYNAMIC(CTimelineDLG)

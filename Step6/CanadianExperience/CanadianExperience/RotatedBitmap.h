@@ -3,7 +3,7 @@
  *
  * \author Reid Harry
  *
- * 
+ * Class to support drawing eye images
  */
 
 #pragma once
@@ -11,6 +11,7 @@
 #include <memory>
 #include <string>
 
+/** Class to support drawing eye images */
 class CRotatedBitmap
 {
 public:

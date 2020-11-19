@@ -53,6 +53,8 @@ public:
     *   \param timeline New timeline of the channel */
     void SetTimeline(CTimeline* timeline) { mTimeline = timeline; }
 
+    void RemoveKeyframe(int frame);
+
     /** Class that represents a keyframe */
     class Keyframe
     {
@@ -72,9 +74,9 @@ public:
         /** Setter for frame
         *   \param frame New frame number */
         void SetFrame(int frame) { mFrame = frame; }
-        virtual void UseAs1() = 0;
-        virtual void UseAs2() = 0;
-        virtual void UseOnly() = 0;
+        virtual void UseAs1() = 0;  ///< Abstract function Use as 1
+        virtual void UseAs2() = 0;  ///< Abstract function Use as 2
+        virtual void UseOnly() = 0; ///< Abstract function Use only
     protected:
         /// Frame number
         int mFrame;

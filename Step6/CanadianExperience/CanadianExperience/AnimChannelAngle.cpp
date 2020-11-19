@@ -7,6 +7,7 @@
 #include "pch.h"
 #include <memory>
 #include "AnimChannelAngle.h"
+#include "Timeline.h"
 
 using namespace std;
 

@@ -156,7 +156,8 @@ BOOL CViewTimeline::OnEraseBkgnd(CDC* pDC)
  /** Handle the Edit>Delete Keyframe menu option */
  void CViewTimeline::OnEditDeletekeyframe()
  {
-     // TODO: Add your command handler code here
+     GetPicture()->GetTimeline()->RemoveKeyframe();
+     GetPicture()->SetAnimationTime(GetPicture()->GetTimeline()->GetTickCount());
  }
 
 
@@ -182,6 +183,10 @@ BOOL CViewTimeline::OnEraseBkgnd(CDC* pDC)
      ON_WM_MOUSEMOVE()
  END_MESSAGE_MAP()
 
+ /** When the mouse clicks
+* \param nFlags Any flags
+* \param point Mouse point
+*/
  void CViewTimeline::OnLButtonDown(UINT nFlags, CPoint point)
  {
      // Convert mouse coordinates to logical coordinates
@@ -202,7 +207,10 @@ BOOL CViewTimeline::OnEraseBkgnd(CDC* pDC)
      __super::OnLButtonDown(nFlags, point);
  }
 
-
+/** When the mouse moves
+* \param nFlags Any flags
+* \param point Mouse point
+*/
  void CViewTimeline::OnMouseMove(UINT nFlags, CPoint point)
  {
      // Convert mouse coordinates to logical coordinates

@@ -16,6 +16,8 @@ CAnimChannel::~CAnimChannel()
 {
 }
 
+/** True if the channel is valid
+*   \returns True channel valid */
 bool CAnimChannel::IsValid()
 {
 	return mKeyframe1 >= 0 || mKeyframe2 >= 0;
@@ -30,6 +32,8 @@ bool CAnimChannel::IsValid()
 * time. Note that the time may be before or after the first or last
 * itme in the list. We indicate that with values of -1 for the
 * indices.
+* 
+* \param currFrame Current frame
 */
 void CAnimChannel::SetFrame(int currFrame)
 {
@@ -152,6 +156,48 @@ void CAnimChannel::InsertKeyframe(std::shared_ptr<Keyframe> keyframe)
 	}
 }
 
+/** Removes a keyframe at a given frame number
+*   \param frame Frame in which the keyframe will be removed from */
+void CAnimChannel::RemoveKeyframe(int frame)
+{
+	for (int i = 0; i < mKeyframes.size(); i++)
+	{
+		if (mKeyframes[i]->GetFrame() == frame)
+		{
+			if (i == mKeyframes.size() - 1)
+			{
+				// If the last keyframe is deleted
+				mKeyframe1--;
+			}
+			else if (i == 0)
+			{
+				// If the first keyframe is deleted
+				mKeyframe1 = -1;
+				if (mKeyframes.size() == 1)
+				{
+					mKeyframe2 = -1;
+				}
+				else
+				{
+					mKeyframe2 = 0;
+				}
+			}
+			else
+			{
+				// If a keyframe in the middle is deleted
+				mKeyframe1--;
+				mKeyframe2--;
+			}
+
+			mKeyframes.erase(mKeyframes.begin() + i);
+
+			break;
+		}
+	}
+}
+
+/** Interpolate the change from last keyframe
+*   \param t t value*/
 void CAnimChannel::Tween(double t)
 {
 }

@@ -30,6 +30,8 @@ public:
 
     void AddChannel(CAnimChannel* channel);
 
+    void RemoveKeyframe();
+
     /** Get the current frame.
      *
      * This is the frame associated with the current time
@@ -79,7 +81,7 @@ private:
 	/// Current time in the timeline
 	double mCurrentTime = 0;
 
-    /// List of all the animatino channels
+    /// List of all the animation channels
     std::vector<CAnimChannel*> mChannels;
 };
 

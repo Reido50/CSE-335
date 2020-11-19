@@ -26,10 +26,22 @@ void CTimeline::AddChannel(CAnimChannel* channel)
 }
 
 /**
+* Removes a keyframe at the current frame
+*/
+void CTimeline::RemoveKeyframe()
+{
+	for (auto channel : mChannels)
+	{
+		channel->RemoveKeyframe(GetCurrentFrame());
+	}
+}
+
+/**
 * Sets the current time
 * 
 * Ensures all of the channels are
 * valid for that point in time
+* \param t T value
 */
 void CTimeline::SetCurrentTime(double t)
 {

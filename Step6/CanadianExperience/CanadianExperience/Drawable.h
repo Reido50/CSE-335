@@ -32,10 +32,10 @@ public:
     void operator=(const CDrawable&) = delete;
 
     virtual void SetActor(CActor* actor);
-    virtual void Draw(Gdiplus::Graphics* graphics) = 0;
+    virtual void Draw(Gdiplus::Graphics* graphics) = 0;     ///< Abstract Draw method \param graphics Graphic object
     void Place(Gdiplus::Point offset, double rotate);
     void AddChild(std::shared_ptr<CDrawable> child);
-    virtual bool HitTest(Gdiplus::Point pos) = 0;
+    virtual bool HitTest(Gdiplus::Point pos) = 0;       ///< Abstract Draw method \returns True if hit \param pos Position to test hit
 
     /** Is this drawable movable
     * \returns False

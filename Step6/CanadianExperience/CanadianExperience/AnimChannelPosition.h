@@ -30,10 +30,9 @@ public:
     *   \returns Current position */
     Gdiplus::Point GetPosition() { return mPosition; }
 
-    /** Set a keyframe
-    *   \param position Position of the keyframe */
     void SetKeyframe(Gdiplus::Point position);
 
+    /** Keyframe class for handling position */
     class KeyframePosition : public Keyframe
     {
     public:

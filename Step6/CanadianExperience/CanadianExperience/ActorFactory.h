@@ -18,6 +18,8 @@ class CActor;
 class CActorFactory
 {
 public:
+	/** Create function is abstract 
+	*   \returns Created actor */
 	virtual std::shared_ptr<CActor> Create() = 0;
 };
 

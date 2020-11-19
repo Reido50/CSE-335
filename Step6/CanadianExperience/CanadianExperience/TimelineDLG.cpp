@@ -11,6 +11,9 @@
 
 IMPLEMENT_DYNAMIC(CTimelineDLG, CDialog)
 
+/** Constructor
+* \param pParent parent window
+*/
 CTimelineDLG::CTimelineDLG(CWnd* pParent /*=nullptr*/)
 	: CDialog(IDD_TIMELINEDLG, pParent)
 	, mNumFrames(0)
@@ -43,6 +46,9 @@ void CTimelineDLG::Take()
 	mTimeline->SetFrameRate(mFrameRate);
 }
 
+/** Exchange data from the DLG
+* \param pDX data to exchange
+*/
 void CTimelineDLG::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);

@@ -25,13 +25,16 @@ public:
     virtual ~CAnimChannelAngle();
 
     /** Getter for angle
-    *   /returns Current angle */
+    *   \returns Current angle */
     double GetAngle() { return mAngle; }
 
-    /** Set a keyframe
-    *   \param angle Angle of the keyframe */
     void SetKeyframe(double angle);
 
+    /** Removes a keyframe
+    */
+    void RemoveKeyframe();
+
+    /** Keyframe class for handling angle */
     class KeyframeAngle : public Keyframe
     {
     public:

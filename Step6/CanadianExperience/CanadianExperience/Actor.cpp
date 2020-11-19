@@ -92,7 +92,7 @@ void CActor::AddDrawable(std::shared_ptr<CDrawable> drawable)
 }
 
 /** Add the channels for this actor to a timeline
-*/
+*   \param timeline Timeline we are adding the channel to */
 void CActor::SetTimeline(CTimeline* timeline)
 {
     timeline->AddChannel(&mChannel);
