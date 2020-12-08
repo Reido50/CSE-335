@@ -7,6 +7,10 @@
 #include "pch.h"
 #include "Component.h"
 
+CComponent::CComponent()
+{
+}
+
 /**
 * Rotates the component by a certain amount of degrees
 * \param rotation Amount to rotate by
@@ -23,6 +27,9 @@ void CComponent::Rotate(double rotation)
 */
 void CComponent::Draw(Gdiplus::Graphics* graphics, Gdiplus::Point position)
 {
+	int drawX = position.X + mPosition.X;
+	int drawY = position.Y + mPosition.Y;
+	mPolygon->DrawPolygon(graphics, drawX, drawY);
 }
 
 /**

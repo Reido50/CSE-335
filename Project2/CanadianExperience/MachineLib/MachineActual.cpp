@@ -7,6 +7,7 @@
 #include "pch.h"
 #include "MachineActual.h"
 #include "Assembly.h"
+#include "Assembly1Factory.h"
 
 using namespace Gdiplus;
 
@@ -16,7 +17,7 @@ using namespace Gdiplus;
 */
 CMachineActual::CMachineActual(int machine)
 {
-	mNumber = machine;
+	CMachineActual::SetMachineNumber(machine);
 }
 
 /** Destructor */
@@ -41,6 +42,9 @@ void CMachineActual::DrawMachine(Gdiplus::Graphics* graphics)
 */
 void CMachineActual::SetMachineFrame(int frame)
 {
+	int elapsedFrames = mFrame - frame;
+	double elapsedTime = (double)elapsedFrames / (double)mFrameRate;
+	mAssembly->Update(elapsedTime);
 }
 
 /**
@@ -49,6 +53,14 @@ void CMachineActual::SetMachineFrame(int frame)
 */
 void CMachineActual::SetMachineNumber(int machine)
 {
+	mNumber = machine;
+
+	if (machine == 1)
+	{
+		CAssembly1Factory factory;
+		mAssembly = factory.CreateAssembly();
+		mAssembly->SetMachine(this);
+	}
 }
 
 /**

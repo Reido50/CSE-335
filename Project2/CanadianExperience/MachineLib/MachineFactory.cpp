@@ -9,9 +9,11 @@
 #include "pch.h"
 #include "MachineFactory.h"
 #include "Machine.h"
+#include "MachineActual.h"
 
 
 using namespace std;
+using namespace Gdiplus;
 
 /**
  * Constructor
@@ -35,6 +37,6 @@ CMachineFactory::~CMachineFactory()
  */
 std::shared_ptr<CMachine> CMachineFactory::CreateMachine()
 {
-    return make_shared<CMachine>();
+    return make_shared<CMachineActual>(1);
 }
 

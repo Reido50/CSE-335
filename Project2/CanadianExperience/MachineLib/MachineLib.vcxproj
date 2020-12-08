@@ -109,6 +109,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Assembly.cpp" />
+    <ClCompile Include="Assembly1Factory.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Const.cpp" />
     <ClCompile Include="MachineActual.cpp" />
@@ -127,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assembly.h" />
+    <ClInclude Include="Assembly1Factory.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Const.h" />
     <ClInclude Include="MachineActual.h" />

@@ -16,8 +16,7 @@ class CAssembly;
 class CComponent
 {
 public:
-    /** \brief Default constructor disabled */
-    CComponent() = delete;
+    CComponent();
     /** \brief Copy constructor disabled */
     CComponent(const CComponent&) = delete;
     /** \brief Assignment operator disabled */
@@ -30,7 +29,7 @@ public:
     void SetAssembly(CAssembly* assembly);
 protected:
     /// Polygon the component represents
-    CPolygon mPolygon;
+    std::shared_ptr<CPolygon> mPolygon;
 private:
 	/// Position of component in relation to Machine
 	Gdiplus::Point mPosition = Gdiplus::Point(0, 0);

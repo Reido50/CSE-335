@@ -31,6 +31,10 @@ CAssembly::~CAssembly()
 */
 void CAssembly::Draw(Gdiplus::Graphics* graphics, Gdiplus::Point position)
 {
+	for (auto component : mComponents)
+	{
+		component->Draw(graphics, position);
+	}
 }
 
 /**
@@ -40,6 +44,10 @@ void CAssembly::Draw(Gdiplus::Graphics* graphics, Gdiplus::Point position)
 */
 void CAssembly::Update(double elapsed)
 {
+	for (auto component : mComponents)
+	{
+		component->Update(elapsed);
+	}
 }
 
 /**
@@ -49,4 +57,9 @@ void CAssembly::AddComponent(std::shared_ptr<CComponent> component)
 {
 	mComponents.push_back(component);
 	component->SetAssembly(this);
+}
+
+void CAssembly::SetMachine(CMachineActual* machine)
+{
+	mMachine = machine;
 }
