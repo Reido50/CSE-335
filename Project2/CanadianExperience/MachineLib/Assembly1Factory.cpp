@@ -9,6 +9,7 @@
 #include "Assembly.h"
 #include "Polygon.h"
 #include "Shape.h"
+#include "Mouse.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -40,9 +41,14 @@ std::shared_ptr<CAssembly> CAssembly1Factory::CreateAssembly()
 	shape2->GetPolygon()->SetColor(Color::Green);
 	shape2->SetPosition(Point(0, 0));
 
+	// Make a test mouse
+	auto mouse = make_shared<CMouse>();
+	mouse->SetPosition(Point(200, 200));
+
 	// Add components to the assembly
 	assembly->AddComponent(shape1);
 	assembly->AddComponent(shape2);
+	assembly->AddComponent(mouse);
 
 	return assembly;
 }

@@ -30,9 +30,9 @@ public:
 protected:
     /// Polygon the component represents
     std::shared_ptr<CPolygon> mPolygon;
+    /// Position of component in relation to Machine
+    Gdiplus::Point mPosition = Gdiplus::Point(0, 0);
 private:
-	/// Position of component in relation to Machine
-	Gdiplus::Point mPosition = Gdiplus::Point(0, 0);
     /// Rotation of component in degrees
     double mRotation = 0;
     /// Assembly the component is associated with

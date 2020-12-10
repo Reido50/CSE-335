@@ -24,7 +24,7 @@ public:
     void operator=(const CShape&) = delete;
     ~CShape();
 
-    void Update(double elapsed);
+    void Update(double elapsed) override;
     std::shared_ptr<CPolygon> GetPolygon();
 };
 
