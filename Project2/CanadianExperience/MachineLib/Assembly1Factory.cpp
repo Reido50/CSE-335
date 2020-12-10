@@ -35,19 +35,20 @@ std::shared_ptr<CAssembly> CAssembly1Factory::CreateAssembly()
 	shape1->GetPolygon()->SetColor(Color::Red);
 	shape1->SetPosition(Point(200, 0));
 
-	// Make a test shape (a green rectangle)
-	auto shape2 = make_shared<CShape>();
-	shape2->GetPolygon()->Rectangle(0, 0, 100, 200);
-	shape2->GetPolygon()->SetColor(Color::Green);
-	shape2->SetPosition(Point(0, 0));
+	// Make a cheese
+	auto cheese = make_shared<CShape>();
+	cheese->GetPolygon()->CenteredSquare(70);
+	cheese->GetPolygon()->SetImage(L"images/cheese.png");
+	cheese->SetPosition(Point(-300, 0));
 
 	// Make a test mouse
 	auto mouse = make_shared<CMouse>();
-	mouse->SetPosition(Point(200, 200));
+	mouse->SetPosition(Point(100, 0));
+	mouse->SetCheese(cheese);
 
 	// Add components to the assembly
 	assembly->AddComponent(shape1);
-	assembly->AddComponent(shape2);
+	assembly->AddComponent(cheese);
 	assembly->AddComponent(mouse);
 
 	return assembly;

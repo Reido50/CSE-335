@@ -27,12 +27,13 @@ public:
     void virtual Update(double elapsed) = 0;
     void SetPosition(Gdiplus::Point position);
     void SetAssembly(CAssembly* assembly);
+    Gdiplus::Point GetPosition();
 protected:
     /// Polygon the component represents
     std::shared_ptr<CPolygon> mPolygon;
+private:
     /// Position of component in relation to Machine
     Gdiplus::Point mPosition = Gdiplus::Point(0, 0);
-private:
     /// Rotation of component in degrees
     double mRotation = 0;
     /// Assembly the component is associated with

@@ -31,8 +31,11 @@ private:
     /// Start point for the mouse
     Gdiplus::Point mStart = Gdiplus::Point(0, 0);
 
+    /// End point for the mouse
+    Gdiplus::Point mEnd = Gdiplus::Point(0, 0);
+
     /// Move speed of mouse in pixels per second
-    double mMoveSpeed = 0.0;
+    double mMoveSpeed = 35.0;
 
     /// Cheese the mouse moves toward
     std::shared_ptr<CShape> mCheese;

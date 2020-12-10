@@ -4,6 +4,7 @@
  * \author Reid Harry
  */
 
+#include <cmath>
 #include "pch.h"
 #include "Mouse.h"
 #include "Polygon.h"
@@ -17,9 +18,8 @@ using namespace Gdiplus;
 CMouse::CMouse()
 {
 	mPolygon = make_shared<CPolygon>();
-	mPolygon->Rectangle(0, 0, 76, 76);
-	mPolygon->SetColor(Color::White);
-	mPolygon->SetImage(L"/images/mouse.png");
+	mPolygon->CenteredSquare(76);
+	mPolygon->SetImage(L"images/mouse.png");
 }
 
 /**
@@ -35,7 +35,17 @@ CMouse::~CMouse()
 */
 void CMouse::Update(double elapsed)
 {
-	
+	double direction = copysign(1.0, GetPosition().X - mCheese->GetPosition().X);
+
+	if (abs(GetPosition().X - mCheese->GetPosition().X) > 70)
+	{
+		SetPosition(Point(mStart.X + elapsed * mMoveSpeed * direction, GetPosition().Y));
+	}
+	else
+	{
+		SetPosition(Point(mCheese->GetPosition().X + 70, mCheese->GetPosition().Y));
+	}
+
 }
 
 /**
