@@ -6,12 +6,16 @@
 
 #include "pch.h"
 #include "Polygon.h"
+#include "Const.h"
 
 using namespace Gdiplus;
 using namespace std;
 
 /// Degrees in a circle
 const double Circle = 360;
+const double ToothDepth = 5;     ///< Depth of a tooth in pixels
+const double ToothWidth = 0.33;  ///< Width of a tooth at the top as fraction of tooth pitch
+const double ToothSlope = 0.1;   ///< Fraction of pitch where the tooth slopes up or down
 
 /**
  * Constructor
@@ -67,6 +71,33 @@ void CPolygon::CenteredSquare(int size)
     Rectangle(-size / 2, size / 2, size, size);
 }
 
+
+/**
+* Create a gear
+* \param radius Radius of the gear shape
+* \param numTeeth Number of teeth the gear shape has
+*/
+void CPolygon::Gear(double radius, int numTeeth)
+{
+    // Where the tooth starts in the arc
+    double toothStart = 1.0 - ToothWidth - ToothSlope * 2;
+    double innerRadius = radius - ToothDepth;
+
+    for (int t = 0; t < numTeeth; t++)
+    {
+        double angle1 = double(t) / double(numTeeth) * CConst::PI2;
+        double angle2 = double(t + toothStart) / double(numTeeth) * CConst::PI2;
+        double angle3 = double(t + toothStart + ToothSlope) / double(numTeeth) * CConst::PI2;
+        double angle4 = double(t + toothStart + ToothSlope + ToothWidth) / double(numTeeth) * CConst::PI2;
+        double angle5 = double(t + toothStart + ToothSlope * 2 + ToothWidth) / double(numTeeth) * CConst::PI2;
+
+        AddPoint(innerRadius * cos(angle1), innerRadius * sin(angle1));
+        AddPoint(innerRadius * cos(angle2), innerRadius * sin(angle2));
+        AddPoint(radius * cos(angle3), radius * sin(angle3));
+        AddPoint(radius * cos(angle4), radius * sin(angle4));
+        AddPoint(innerRadius * cos(angle5), innerRadius * sin(angle5));
+    }
+}
 
 /**
  * Set the color of the polygon. If we set a color, images are not used.

@@ -37,15 +37,24 @@ void CMouse::Update(double elapsed)
 {
 	double direction = copysign(1.0, GetPosition().X - mCheese->GetPosition().X);
 
-	if (abs(GetPosition().X - mCheese->GetPosition().X) > 70)
+	// Only moves the mouse if it is more than 70 pixels away from the cheese
+	if (abs(mVirtualPositionX - mCheese->GetPosition().X) > 70)
 	{
 		SetPosition(Point(mStart.X + elapsed * mMoveSpeed * direction, GetPosition().Y));
+		for (auto motor : mMotors)
+		{
+			motor->SetOn(false);
+		}
 	}
 	else
 	{
-		SetPosition(Point(mCheese->GetPosition().X + 70, mCheese->GetPosition().Y));
+		for (auto motor : mMotors)
+		{
+			motor->SetOn(true);
+		}
 	}
 
+	mVirtualPositionX = mStart.X + elapsed * mMoveSpeed * direction;
 }
 
 /**
@@ -73,4 +82,13 @@ void CMouse::SetSpeed(double speed)
 void CMouse::SetCheese(std::shared_ptr<CShape> cheese)
 {
 	mCheese = cheese;
+}
+
+/**
+* Add a motor to the collection to be turned on
+* when the mouse reaches to cheese
+*/
+void CMouse::AddMotor(std::shared_ptr<CMotor> motor)
+{
+	mMotors.push_back(motor);
 }

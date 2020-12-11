@@ -36,6 +36,7 @@ public:
     void Rectangle(int x, int y, int wid, int hit);
     void Rectangle(double x, double y, double wid, double hit);
     void CenteredSquare(int size);
+    void Gear(double radius, int numTeeth);
 
     void SetColor(Gdiplus::Color color);
 

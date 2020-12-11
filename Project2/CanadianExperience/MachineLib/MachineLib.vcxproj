@@ -112,9 +112,13 @@
     <ClCompile Include="Assembly1Factory.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Const.cpp" />
+    <ClCompile Include="Gear.cpp" />
     <ClCompile Include="MachineActual.cpp" />
+    <ClCompile Include="Motor.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="Sink.cpp" />
+    <ClCompile Include="Source.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="Polygon.cpp" />
     <ClCompile Include="pch.cpp">
@@ -132,9 +136,13 @@
     <ClInclude Include="Assembly1Factory.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Const.h" />
+    <ClInclude Include="Gear.h" />
     <ClInclude Include="MachineActual.h" />
+    <ClInclude Include="Motor.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="Shape.h" />
+    <ClInclude Include="Sink.h" />
+    <ClInclude Include="Source.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Polygon.h" />
     <ClInclude Include="Resource.h" />

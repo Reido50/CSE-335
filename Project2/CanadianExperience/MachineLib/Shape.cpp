@@ -33,12 +33,3 @@ void CShape::Update(double elapsed)
 {
 	
 }
-
-/**
-* Getter for Polygon
-* \returns The polygon of the shape
-*/
-std::shared_ptr<CPolygon> CShape::GetPolygon()
-{
-	return mPolygon;
-}

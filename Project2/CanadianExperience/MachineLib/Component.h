@@ -28,14 +28,23 @@ public:
     void SetPosition(Gdiplus::Point position);
     void SetAssembly(CAssembly* assembly);
     Gdiplus::Point GetPosition();
+    std::shared_ptr<CPolygon> GetPolygon();
+    void AddSink(std::shared_ptr<CComponent> sink);
+    void SetSource(std::shared_ptr<CComponent> source);
+    int virtual GetNumTeeth();
+    double GetRotation();
 protected:
     /// Polygon the component represents
     std::shared_ptr<CPolygon> mPolygon;
+    /// Source of rotation for this component
+    CComponent* mSource = nullptr;
+    /// Sinks of rotation for this component
+    std::vector<CComponent*> mSinks = { nullptr };
+    /// Rotation of component in degrees
+    double mRotation = 0;
 private:
     /// Position of component in relation to Machine
     Gdiplus::Point mPosition = Gdiplus::Point(0, 0);
-    /// Rotation of component in degrees
-    double mRotation = 0;
     /// Assembly the component is associated with
     CAssembly* mAssembly;
 };

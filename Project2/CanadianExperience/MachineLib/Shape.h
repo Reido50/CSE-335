@@ -25,6 +25,5 @@ public:
     ~CShape();
 
     void Update(double elapsed) override;
-    std::shared_ptr<CPolygon> GetPolygon();
 };
 
