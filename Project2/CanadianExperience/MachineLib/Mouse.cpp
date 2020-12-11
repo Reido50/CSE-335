@@ -35,26 +35,31 @@ CMouse::~CMouse()
 */
 void CMouse::Update(double elapsed)
 {
-	double direction = copysign(1.0, GetPosition().X - mCheese->GetPosition().X);
+	bool motorStatus = false;
+	int newX;
 
-	// Only moves the mouse if it is more than 70 pixels away from the cheese
-	if (abs(mVirtualPositionX - mCheese->GetPosition().X) > 70)
+	mVirtualPositionX -= elapsed * mMoveSpeed;
+
+	if (mVirtualPositionX > mStart.X) 
 	{
-		SetPosition(Point(mStart.X + elapsed * mMoveSpeed * direction, GetPosition().Y));
-		for (auto motor : mMotors)
-		{
-			motor->SetOn(false);
-		}
+		newX = mStart.X;
+	}
+	else if (mVirtualPositionX < (double)mCheese->GetPosition().X + 70.0)
+	{
+		newX = mCheese->GetPosition().X + 70;
+		motorStatus = true;
 	}
 	else
 	{
-		for (auto motor : mMotors)
-		{
-			motor->SetOn(true);
-		}
+		newX = mVirtualPositionX;
 	}
 
-	mVirtualPositionX = mStart.X + elapsed * mMoveSpeed * direction;
+	for (auto motor : mMotors)
+	{
+		motor->SetOn(motorStatus);
+	}
+
+	SetPosition(Point(newX, mStart.Y));
 }
 
 /**
@@ -64,6 +69,7 @@ void CMouse::Update(double elapsed)
 void CMouse::SetStart(Gdiplus::Point start)
 {
 	mStart = start;
+	mVirtualPositionX = start.X;
 }
 
 /**

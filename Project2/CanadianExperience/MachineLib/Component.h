@@ -40,7 +40,7 @@ protected:
     CComponent* mSource = nullptr;
     /// Sinks of rotation for this component
     std::vector<CComponent*> mSinks = { nullptr };
-    /// Rotation of component in degrees
+    /// Rotation of component
     double mRotation = 0;
 private:
     /// Position of component in relation to Machine

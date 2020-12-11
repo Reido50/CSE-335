@@ -35,14 +35,15 @@ private:
     Gdiplus::Point mStart = Gdiplus::Point(0, 0);
 
     /// Position of the mouse if it did not stop and eat the cheese
-    int mVirtualPositionX = 0;
+    double mVirtualPositionX = 0;
 
     /// Move speed of mouse in pixels per second
-    double mMoveSpeed = 35.0;
+    double mMoveSpeed = 70.0;
 
     /// Cheese the mouse moves toward
     std::shared_ptr<CShape> mCheese;
 
+    /// List of motors the mouse triggers when it gets the cheese
     std::vector<std::shared_ptr<CMotor>> mMotors;
 };
 

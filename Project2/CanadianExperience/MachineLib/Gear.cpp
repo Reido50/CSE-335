@@ -58,7 +58,7 @@ void CGear::Rotate(double rotation)
 			}
 			else
 			{
-				sink->Rotate(-mRotation * sink->GetNumTeeth() / mNumTeeth);
+				sink->Rotate(-rotation * sink->GetNumTeeth() / mNumTeeth);
 			}
 		}
 	}

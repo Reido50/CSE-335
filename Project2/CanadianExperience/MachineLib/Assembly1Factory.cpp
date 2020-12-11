@@ -52,13 +52,15 @@ std::shared_ptr<CAssembly> CAssembly1Factory::CreateAssembly()
 	// Make a test mouse
 	auto mouse = make_shared<CMouse>();
 	mouse->SetPosition(Point(100, 0));
+	mouse->SetStart(Point(100, 0));
 	mouse->SetCheese(cheese);
 
 	// Make a test motor
 	auto motor = make_shared<CMotor>();
 	motor->SetPosition(Point(300, 0));
-	motor->SetRotationSpeed(0.01);
+	motor->SetRotationSpeed(0.25);
 	mouse->AddMotor(motor);
+	motor->SetOn(true);
 
 	// Make a test gear
 	auto gear1 = make_shared<CGear>(70, 20);
