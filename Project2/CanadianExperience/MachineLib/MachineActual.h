@@ -16,6 +16,10 @@ class CMachineActual :
     public CMachine
 {
 public:
+    /**
+    * Constructor
+    * \param machine Machine number
+    */
     CMachineActual(int machine);
     /** \brief Default constructor disabled */
     CMachineActual() = delete;

@@ -8,6 +8,7 @@
 #include "MachineActual.h"
 #include "Assembly.h"
 #include "Assembly1Factory.h"
+#include "Assembly2Factory.h"
 
 using namespace Gdiplus;
 
@@ -42,16 +43,10 @@ void CMachineActual::DrawMachine(Gdiplus::Graphics* graphics)
 */
 void CMachineActual::SetMachineFrame(int frame)
 {
-	/*
-	int elapsedFrames = frame - mFrame;
-	double elapsedTime = ((double)elapsedFrames) / ((double)mFrameRate);
-	mAssembly->Update(elapsedTime);
-	*/
 	if (frame < mFrame)
 	{
 		mFrame = 0;
 		CMachineActual::SetMachineNumber(mNumber);
-		//mAssembly->Update(0.0001);
 	}
 
 	while (mFrame < frame) {
@@ -74,6 +69,15 @@ void CMachineActual::SetMachineNumber(int machine)
 		mAssembly = factory.CreateAssembly();
 		mAssembly->SetMachine(this);
 	}
+	else if (machine == 2)
+	{
+		CAssembly2Factory factory;
+		mAssembly = factory.CreateAssembly();
+		mAssembly->SetMachine(this);
+	}
+
+	// Makes sure the mouse and pin get drawn in the correct place
+	mAssembly->Update(0);
 }
 
 /**

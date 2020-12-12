@@ -19,16 +19,26 @@
 using namespace std;
 using namespace Gdiplus;
 
+/**
+* Constructor
+*/
 CAssembly1Factory::CAssembly1Factory()
 {
 
 }
 
+/**
+* Destructor
+*/
 CAssembly1Factory::~CAssembly1Factory()
 {
 
 }
 
+/**
+* Creates and returns the assembly for machine 1
+* \returns Created assembly
+*/
 std::shared_ptr<CAssembly> CAssembly1Factory::CreateAssembly()
 {
 	// Make the assembly
@@ -158,7 +168,7 @@ std::shared_ptr<CAssembly> CAssembly1Factory::CreateAssembly()
 	assembly->AddComponent(cheese);
 	assembly->AddComponent(mouse);
 	assembly->AddComponent(stand);
-	//add basket here
+	assembly->AddComponent(basket);
 	assembly->AddComponent(front);
 	assembly->AddComponent(post);
 	assembly->AddComponent(post_base);
@@ -171,7 +181,6 @@ std::shared_ptr<CAssembly> CAssembly1Factory::CreateAssembly()
 	assembly->AddComponent(gear6);
 	assembly->AddComponent(winch);
 	assembly->AddComponent(pin);
-	assembly->AddComponent(basket);
 	assembly->AddComponent(flag);
 
 	return assembly;

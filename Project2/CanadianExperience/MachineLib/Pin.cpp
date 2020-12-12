@@ -29,7 +29,7 @@ CPin::~CPin()
 
 /**
 * Called every frame before draw
-* \param elpased Time since last update call
+* \param elapsed Time since last update call
 */
 void CPin::Update(double elapsed)
 {

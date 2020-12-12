@@ -59,6 +59,10 @@ void CComponent::SetAssembly(CAssembly* assembly)
 	mAssembly = assembly;
 }
 
+/**
+* Getter for position
+* \returns Position of the component
+*/
 Gdiplus::Point CComponent::GetPosition()
 {
 	return mPosition;

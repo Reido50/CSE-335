@@ -16,12 +16,14 @@ using namespace Gdiplus;
 
 /**
 * Constructor
+* \param name Name of the drawable
 * \param machine Machine number to load in first
 */
 CMachineDrawable::CMachineDrawable(const std::wstring& name, int machine) : CDrawable(name)
 {
 	CMachineFactory factory;
 	mMachine = factory.CreateMachine();
+	mMachine->SetMachineNumber(machine);
 }
 
 /**
@@ -39,7 +41,10 @@ void CMachineDrawable::Draw(Gdiplus::Graphics* graphics)
 {
 	mMachine->SetLocation(GetPosition().X, GetPosition().Y);
 	mMachine->SetMachineFrame(GetAngleChannel()->GetTimeline()->GetCurrentFrame());
+	auto state = graphics->Save();
+	graphics->ScaleTransform((float)mScale, (float)mScale);
 	mMachine->DrawMachine(graphics);
+	graphics->Restore(state);
 }
 
 /**
@@ -50,4 +55,13 @@ void CMachineDrawable::Draw(Gdiplus::Graphics* graphics)
 bool CMachineDrawable::HitTest(Gdiplus::Point pos)
 {
 	return false;
+}
+
+/**
+* Setter for the scale of the machine
+* \param scale New scale
+*/
+void CMachineDrawable::SetScale(double scale)
+{
+	mScale = scale;
 }

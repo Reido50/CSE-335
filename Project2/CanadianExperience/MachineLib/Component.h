@@ -24,6 +24,10 @@ public:
 
     void virtual SetRotation(double rotation);
     void virtual Draw(Gdiplus::Graphics* graphics, Gdiplus::Point position);
+    /**
+    * Called every frame before draw
+    * \param elapsed Time in seconds since last update
+    */
     void virtual Update(double elapsed) = 0;
     void SetPosition(Gdiplus::Point position);
     void SetAssembly(CAssembly* assembly);

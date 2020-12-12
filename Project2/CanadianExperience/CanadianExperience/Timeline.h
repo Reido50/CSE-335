@@ -77,7 +77,7 @@ public:
 private:
     void XmlChannel(const std::shared_ptr<xmlnode::CXmlNode> &node);
 
-    int mNumFrames = 300;       ///< Number of frames in the animation
+    int mNumFrames = 900;       ///< Number of frames in the animation
     int mFrameRate = 30;        ///< Animation frame rate in frames per second
     double mCurrentTime = 0;    ///< The current animation time
 

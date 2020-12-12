@@ -51,7 +51,8 @@ void CAssembly::Update(double elapsed)
 }
 
 /**
-* 
+* Adds a component to the component list
+* \param component Component to add
 */
 void CAssembly::AddComponent(std::shared_ptr<CComponent> component)
 {
@@ -59,6 +60,10 @@ void CAssembly::AddComponent(std::shared_ptr<CComponent> component)
 	component->SetAssembly(this);
 }
 
+/**
+* Setter for the machine
+* \param machine New machine
+*/
 void CAssembly::SetMachine(CMachineActual* machine)
 {
 	mMachine = machine;

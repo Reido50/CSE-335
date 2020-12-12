@@ -41,12 +41,22 @@ std::shared_ptr<CPicture> CPictureFactory::Create()
     picture->AddActor(background);
 
     // Create and add machine
-    auto machine = make_shared<CActor>(L"Machine Actor");
-    auto machineDrawable = make_shared<CMachineDrawable>(L"Machine Drawable", 1);
-    machineDrawable->SetPosition(Point(500, 500));
-    machine->AddDrawable(machineDrawable);
-    machine->SetRoot(machineDrawable);
-    picture->AddActor(machine);
+    auto machine1 = make_shared<CActor>(L"Machine Actor");
+    auto machineDrawable1 = make_shared<CMachineDrawable>(L"Machine Drawable", 1);
+    machineDrawable1->SetPosition(Point(1500, 1000));
+    machineDrawable1->SetScale(0.5);
+    machine1->AddDrawable(machineDrawable1);
+    machine1->SetRoot(machineDrawable1);
+    picture->AddActor(machine1);
+
+    // Create and add machine
+    auto machine2 = make_shared<CActor>(L"Machine Actor");
+    auto machineDrawable2 = make_shared<CMachineDrawable>(L"Machine Drawable", 2);
+    machineDrawable2->SetPosition(Point(500, 1000));
+    machineDrawable2->SetScale(0.5);
+    machine2->AddDrawable(machineDrawable2);
+    machine2->SetRoot(machineDrawable2);
+    picture->AddActor(machine2);
 
     // Create and add Harold
     CHaroldFactory factory;

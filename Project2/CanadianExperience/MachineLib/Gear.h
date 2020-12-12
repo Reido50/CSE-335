@@ -10,7 +10,7 @@
 
 #include "Component.h"
 
-/** Represents a gear in the system*/
+/** Represents a gear in the system */
 class CGear :
     public CComponent
 {
@@ -29,6 +29,7 @@ public:
     int GetNumTeeth() override;
     bool IsStacked() override;
     void SetStacked(bool stacked);
+    void SetMaxRotation(double maxRot);
 private:
     /// Radius of the gear in pixels
     double mRadius = 1;
@@ -36,5 +37,7 @@ private:
     int mNumTeeth = 0;
     /// True if the gear is stacked on top of another gear
     bool mStacked = false;
+    /// Maximum rotation for a gear
+    double mMaxRotation = -1.0;
 };
 

@@ -28,8 +28,11 @@ public:
 
     virtual void Draw(Gdiplus::Graphics* graphics) override;
     virtual bool HitTest(Gdiplus::Point pos) override;
+    void SetScale(double scale);
 private:
+    /// The machine we are drawing
     std::shared_ptr<CMachine> mMachine;
-
+    /// Scale of the machine size
+    double mScale = 1.0;
 };
 

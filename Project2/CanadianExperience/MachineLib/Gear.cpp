@@ -47,20 +47,23 @@ void CGear::Update(double elapsed)
 */
 void CGear::SetRotation(double rotation)
 {
-	mRotation = rotation;
-	if (mSinks[0] != nullptr)
+	if (mMaxRotation == -1.0 || rotation < mMaxRotation)
 	{
-		for (auto sink : mSinks)
+		mRotation = rotation;
+		if (mSinks.size() != 0)
 		{
-			if (sink->GetNumTeeth() == 0 || sink->IsStacked())
+			for (auto sink : mSinks)
 			{
-				sink->SetRotation(rotation);
-			}
-			else
-			{
-				// For some reason it looks more like the example program when I flip the fraction of teeth
-				//sink->SetRotation(-rotation * (((double)sink->GetNumTeeth()) / ((double)mNumTeeth)));
-				sink->SetRotation(-rotation * (((double)mNumTeeth) / ((double)sink->GetNumTeeth())));
+				if (sink->GetNumTeeth() == 0 || sink->IsStacked())
+				{
+					sink->SetRotation(rotation);
+				}
+				else
+				{
+					// For some reason it looks more like the example program when I flip the fraction of teeth
+					//sink->SetRotation(-rotation * (((double)sink->GetNumTeeth()) / ((double)mNumTeeth)));
+					sink->SetRotation(-rotation * (((double)mNumTeeth) / ((double)sink->GetNumTeeth())));
+				}
 			}
 		}
 	}
@@ -75,6 +78,10 @@ int CGear::GetNumTeeth()
 	return mNumTeeth;
 }
 
+/**
+* Getter for the stacked flag
+* \returns The current stacked status
+*/
 bool CGear::IsStacked()
 {
 	return mStacked;
@@ -87,4 +94,13 @@ bool CGear::IsStacked()
 void CGear::SetStacked(bool stacked)
 {
 	mStacked = stacked;
+}
+
+/**
+* Setter for max rotation
+* \param maxRot New max rotation
+*/
+void CGear::SetMaxRotation(double maxRot)
+{
+	mMaxRotation = maxRot;
 }

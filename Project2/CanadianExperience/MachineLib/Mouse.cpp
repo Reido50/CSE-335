@@ -54,10 +54,14 @@ void CMouse::Update(double elapsed)
 		newX = mVirtualPositionX;
 	}
 
-	for (auto motor : mMotors)
+	if (motorStatus)
 	{
-		motor->SetOn(motorStatus);
+		for (auto motor : mMotors)
+		{
+			motor->SetOn(motorStatus);
+		}
 	}
+	
 
 	SetPosition(Point(newX, mStart.Y));
 }
@@ -93,6 +97,7 @@ void CMouse::SetCheese(std::shared_ptr<CShape> cheese)
 /**
 * Add a motor to the collection to be turned on
 * when the mouse reaches to cheese
+* \param motor Motor to add
 */
 void CMouse::AddMotor(std::shared_ptr<CMotor> motor)
 {
