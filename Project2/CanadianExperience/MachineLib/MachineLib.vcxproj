@@ -110,12 +110,15 @@
   <ItemGroup>
     <ClCompile Include="Assembly.cpp" />
     <ClCompile Include="Assembly1Factory.cpp" />
+    <ClCompile Include="Basket.cpp" />
+    <ClCompile Include="Cable.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Const.cpp" />
     <ClCompile Include="Gear.cpp" />
     <ClCompile Include="MachineActual.cpp" />
     <ClCompile Include="Motor.cpp" />
     <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="Pin.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Sink.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -130,16 +133,20 @@
     <ClCompile Include="MachineLib.cpp" />
     <ClCompile Include="MachineDlg.cpp" />
     <ClCompile Include="MachineStandin.cpp" />
+    <ClCompile Include="Winch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assembly.h" />
     <ClInclude Include="Assembly1Factory.h" />
+    <ClInclude Include="Basket.h" />
+    <ClInclude Include="Cable.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Const.h" />
     <ClInclude Include="Gear.h" />
     <ClInclude Include="MachineActual.h" />
     <ClInclude Include="Motor.h" />
     <ClInclude Include="Mouse.h" />
+    <ClInclude Include="Pin.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="Sink.h" />
     <ClInclude Include="Source.h" />
@@ -153,6 +160,7 @@
     <ClInclude Include="MachineLib.h" />
     <ClInclude Include="MachineDlg.h" />
     <ClInclude Include="MachineStandin.h" />
+    <ClInclude Include="Winch.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\MachineLib.rc2" />

@@ -45,20 +45,20 @@ void CGear::Update(double elapsed)
 * Rotates the component by a certain amount of degrees
 * \param rotation Amount to rotate by
 */
-void CGear::Rotate(double rotation)
+void CGear::SetRotation(double rotation)
 {
-	mRotation += rotation;
+	mRotation = rotation;
 	if (mSinks[0] != nullptr)
 	{
 		for (auto sink : mSinks)
 		{
-			if (sink->GetNumTeeth() == 0)
+			if (sink->GetNumTeeth() == 0 || sink->IsStacked())
 			{
-				sink->Rotate(rotation);
+				sink->SetRotation(rotation);
 			}
 			else
 			{
-				sink->Rotate(-rotation * sink->GetNumTeeth() / mNumTeeth);
+				sink->SetRotation(-rotation * (((double)sink->GetNumTeeth()) / ((double)mNumTeeth)));
 			}
 		}
 	}
@@ -71,4 +71,18 @@ void CGear::Rotate(double rotation)
 int CGear::GetNumTeeth()
 {
 	return mNumTeeth;
+}
+
+bool CGear::IsStacked()
+{
+	return mStacked;
+}
+
+/**
+* Setter for stacked
+* \param stacked New stacked status
+*/
+void CGear::SetStacked(bool stacked)
+{
+	mStacked = stacked;
 }

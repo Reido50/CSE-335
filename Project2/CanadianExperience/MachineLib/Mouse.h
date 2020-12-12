@@ -38,7 +38,7 @@ private:
     double mVirtualPositionX = 0;
 
     /// Move speed of mouse in pixels per second
-    double mMoveSpeed = 70.0;
+    double mMoveSpeed = 100.0;
 
     /// Cheese the mouse moves toward
     std::shared_ptr<CShape> mCheese;

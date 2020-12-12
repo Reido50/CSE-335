@@ -24,13 +24,17 @@ public:
     ~CGear();
 
     void Update(double elapsed) override;
-    void Rotate(double rotation) override;
+    void SetRotation(double rotation) override;
 
     int GetNumTeeth() override;
+    bool IsStacked() override;
+    void SetStacked(bool stacked);
 private:
     /// Radius of the gear in pixels
     double mRadius = 1;
     /// Number of teeth the gear has
     int mNumTeeth = 0;
+    /// True if the gear is stacked on top of another gear
+    bool mStacked = false;
 };
 

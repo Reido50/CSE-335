@@ -22,7 +22,7 @@ public:
     /** \brief Assignment operator disabled */
     void operator=(const CComponent&) = delete;
 
-    void virtual Rotate(double rotation);
+    void virtual SetRotation(double rotation);
     void virtual Draw(Gdiplus::Graphics* graphics, Gdiplus::Point position);
     void virtual Update(double elapsed) = 0;
     void SetPosition(Gdiplus::Point position);
@@ -32,6 +32,7 @@ public:
     void AddSink(std::shared_ptr<CComponent> sink);
     void SetSource(std::shared_ptr<CComponent> source);
     int virtual GetNumTeeth();
+    bool virtual IsStacked();
     double GetRotation();
 protected:
     /// Polygon the component represents

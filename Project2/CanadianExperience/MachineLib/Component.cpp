@@ -15,14 +15,14 @@ CComponent::CComponent()
 * Rotates the component by a certain amount of degrees
 * \param rotation Amount to rotate by
 */
-void CComponent::Rotate(double rotation)
+void CComponent::SetRotation(double rotation)
 {
-	mRotation += rotation;
+	mRotation = rotation;
 	if (mSinks[0] != nullptr)
 	{
 		for (auto sink : mSinks)
 		{
-			sink->Rotate(rotation);
+			sink->SetRotation(rotation);
 		}
 	}
 	
@@ -98,9 +98,22 @@ void CComponent::SetSource(std::shared_ptr<CComponent> source)
 	mSource = source.get();
 }
 
+/**
+* Used in determining if a component is using gear driven rotation
+* \returns 0
+*/
 int CComponent::GetNumTeeth()
 {
 	return 0;
+}
+
+/**
+* Used in determining if a component is using gear driven rotation
+* \returns true
+*/
+bool CComponent::IsStacked()
+{
+	return true;
 }
 
 /**

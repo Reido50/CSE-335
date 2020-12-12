@@ -16,7 +16,7 @@ using namespace Gdiplus;
 CMotor::CMotor()
 {
 	mPolygon = make_shared<CPolygon>();
-	mPolygon->CenteredSquare(30);
+	mPolygon->CenteredSquare(20);
 	mPolygon->SetColor(Color::Gray);
 
 	mBody = make_shared<CPolygon>();
@@ -37,9 +37,9 @@ CMotor::~CMotor()
 */
 void CMotor::Update(double elapsed)
 {
-	if (mOn)
+	if (mOn && elapsed != 0.0)
 	{
-		Rotate(elapsed * mRotationSpeed);
+		SetRotation(GetRotation() + elapsed * mRotationSpeed);
 	}
 }
 
@@ -72,4 +72,13 @@ void CMotor::SetRotationSpeed(double rot)
 void CMotor::SetOn(bool on)
 {
 	mOn = on;
+}
+
+/**
+* Getter for the body of the motor
+* \returns Body of the motor
+*/
+std::shared_ptr<CPolygon> CMotor::GetBody()
+{
+	return mBody;
 }

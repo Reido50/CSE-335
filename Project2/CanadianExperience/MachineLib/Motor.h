@@ -28,6 +28,7 @@ public:
 
     void SetRotationSpeed(double rot);
     void SetOn(bool on);
+    std::shared_ptr<CPolygon> GetBody();
 private:
     /// True if the motor is running
     bool mOn = false;
