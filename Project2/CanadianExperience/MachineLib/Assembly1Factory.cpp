@@ -129,6 +129,7 @@ std::shared_ptr<CAssembly> CAssembly1Factory::CreateAssembly()
 	// Winch
 	auto winch = make_shared<CWinch>();
 	winch->SetPosition(Point(-250, -240));
+	winch->GetCable()->SetMinLength(135);
 	gear6->AddSink(winch);
 	winch->SetSource(gear6);
 
@@ -139,10 +140,18 @@ std::shared_ptr<CAssembly> CAssembly1Factory::CreateAssembly()
 
 	// Basket
 	auto basket = make_shared<CBasket>();
-	basket->SetPosition(Point(0, -160));
-	basket->SetStart(Point(0, -160));
+	basket->SetPosition(Point(0, -260));
+	basket->SetStart(Point(0, -260));
 	pin->SetBasket(basket);
 	basket->SetPin(pin);
+
+	// Flag on the winch
+	auto flag = make_shared<CShape>();
+	flag->GetPolygon()->Rectangle(0, 0, 50, 100);
+	flag->GetPolygon()->SetImage(L"images/mouse-flag.png");
+	flag->SetPosition(Point(-250, -240));
+	winch->AddSink(flag);
+	flag->SetSource(winch);
 
 	// Add components to the assembly
 	assembly->AddComponent(shape);
@@ -163,86 +172,7 @@ std::shared_ptr<CAssembly> CAssembly1Factory::CreateAssembly()
 	assembly->AddComponent(winch);
 	assembly->AddComponent(pin);
 	assembly->AddComponent(basket);
-
-	/*// Make a test shape (a red rectangle)
-	auto shape1 = make_shared<CShape>();
-	shape1->GetPolygon()->Rectangle(0, 0, 20, 80);
-	shape1->GetPolygon()->SetColor(Color::Red);
-	shape1->SetPosition(Point(450, 0));
-
-	// Make a test shape (a red rectangle)
-	auto shape2 = make_shared<CShape>();
-	shape2->GetPolygon()->Rectangle(0, 0, 20, 80);
-	shape2->GetPolygon()->SetColor(Color::DarkOrange);
-	shape2->SetPosition(Point(450, 0));
-
-	// Make a cheese
-	auto cheese = make_shared<CShape>();
-	cheese->GetPolygon()->CenteredSquare(70);
-	cheese->GetPolygon()->SetImage(L"images/cheese.png");
-	cheese->SetPosition(Point(-300, 0));
-
-	// Make a test mouse
-	auto mouse = make_shared<CMouse>();
-	mouse->SetPosition(Point(100, 0));
-	mouse->SetStart(Point(100, 0));
-	mouse->SetCheese(cheese);
-
-	// Make a test motor
-	auto motor = make_shared<CMotor>();
-	motor->SetPosition(Point(300, 0));
-	motor->SetRotationSpeed(0.25);
-	mouse->AddMotor(motor);
-	motor->SetOn(true);
-
-	// Make a test gear
-	auto gear1 = make_shared<CGear>(70, 20);
-	gear1->SetPosition(Point(200, -200));
-	gear1->GetPolygon()->SetColor(Color::Purple);
-
-	// Make another test gear
-	auto gear2 = make_shared<CGear>(70, 40);
-	gear2->SetPosition(Point(200, -400));
-	gear2->GetPolygon()->SetColor(Color::BlueViolet);
-
-	// Make a test winch
-	auto winch = make_shared<CWinch>();
-	winch->SetPosition(Point(-200, -400));
-
-	// Make a test pin
-	auto pin = make_shared<CPin>();
-	pin->SetPosition(Point(0, -318));
-	pin->SetCable(winch->GetCable());
-
-	// Make a test basket
-	auto basket = make_shared<CBasket>();
-	basket->SetPosition(Point(0, -464));
-	basket->SetPin(pin);
-	pin->SetBasket(basket);
-
-	// Sources and sinks
-	motor->AddSink(gear1);
-	gear1->SetSource(motor);
-	gear1->AddSink(gear2);
-	gear2->SetSource(gear1);
-	shape1->SetSource(gear1);
-	shape2->SetSource(gear2);
-	gear1->AddSink(shape1);
-	gear2->AddSink(shape2);
-	winch->SetSource(winch);
-	gear2->AddSink(winch);
-
-	// Add components to the assembly
-	assembly->AddComponent(shape1);
-	assembly->AddComponent(shape2);
-	assembly->AddComponent(cheese);
-	assembly->AddComponent(mouse);
-	assembly->AddComponent(motor);
-	assembly->AddComponent(gear1);
-	assembly->AddComponent(gear2);
-	assembly->AddComponent(winch);
-	assembly->AddComponent(pin);
-	assembly->AddComponent(basket);*/
+	assembly->AddComponent(flag);
 
 	return assembly;
 }

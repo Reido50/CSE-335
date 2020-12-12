@@ -18,7 +18,7 @@ CComponent::CComponent()
 void CComponent::SetRotation(double rotation)
 {
 	mRotation = rotation;
-	if (mSinks[0] != nullptr)
+	if (mSinks.size() != 0)
 	{
 		for (auto sink : mSinks)
 		{
@@ -79,14 +79,7 @@ std::shared_ptr<CPolygon> CComponent::GetPolygon()
 */
 void CComponent::AddSink(std::shared_ptr<CComponent> sink)
 {
-	if (mSinks[0] == nullptr)
-	{
-		mSinks[0] = sink.get();
-	}
-	else
-	{
-		mSinks.push_back(sink.get());
-	}
+	mSinks.push_back(sink.get());
 }
 
 /**

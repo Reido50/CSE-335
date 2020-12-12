@@ -58,7 +58,9 @@ void CGear::SetRotation(double rotation)
 			}
 			else
 			{
-				sink->SetRotation(-rotation * (((double)sink->GetNumTeeth()) / ((double)mNumTeeth)));
+				// For some reason it looks more like the example program when I flip the fraction of teeth
+				//sink->SetRotation(-rotation * (((double)sink->GetNumTeeth()) / ((double)mNumTeeth)));
+				sink->SetRotation(-rotation * (((double)mNumTeeth) / ((double)sink->GetNumTeeth())));
 			}
 		}
 	}

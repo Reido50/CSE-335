@@ -64,6 +64,24 @@ void CCable::SetWinch(CWinch* winch)
 }
 
 /**
+* Setter for minimum length
+* \param length New minimum length
+*/
+void CCable::SetMinLength(int length)
+{
+	mMinLength = length;
+}
+
+/**
+* Setter for maximum length
+* \param length New maximum length
+*/
+void CCable::SetMaxLength(int length)
+{
+	mMaxLength = length;
+}
+
+/**
 * Increase/Decrease length
 * \param length Additional length
 */

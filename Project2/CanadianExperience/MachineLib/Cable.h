@@ -26,6 +26,8 @@ public:
     int GetLength();
     int GetMaxLength();
     void SetWinch(CWinch* winch);
+    void SetMinLength(int length);
+    void SetMaxLength(int length);
 private:
     /// Length of the cable if it didn't have a min and max
     double mVirtualLength = 200;

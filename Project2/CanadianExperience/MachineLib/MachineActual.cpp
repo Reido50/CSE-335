@@ -42,10 +42,22 @@ void CMachineActual::DrawMachine(Gdiplus::Graphics* graphics)
 */
 void CMachineActual::SetMachineFrame(int frame)
 {
+	/*
 	int elapsedFrames = frame - mFrame;
 	double elapsedTime = ((double)elapsedFrames) / ((double)mFrameRate);
 	mAssembly->Update(elapsedTime);
-	mFrame = frame;
+	*/
+	if (frame < mFrame)
+	{
+		mFrame = 0;
+		CMachineActual::SetMachineNumber(mNumber);
+		//mAssembly->Update(0.0001);
+	}
+
+	while (mFrame < frame) {
+		mFrame++;
+		mAssembly->Update(1.0 / mFrameRate);
+	}
 }
 
 /**

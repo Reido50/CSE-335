@@ -35,7 +35,8 @@ void CBasket::Update(double elapsed)
 {
 	Gdiplus::Point pos = GetPosition();
 	Gdiplus::Point pinPos = mPin->GetPosition();
-	if (pinPos.X < pos.X)
+
+	if (pinPos.X+10 < pos.X)
 	{
 		int newY;
 
@@ -65,6 +66,7 @@ void CBasket::Update(double elapsed)
 void CBasket::SetStart(Gdiplus::Point start)
 {
 	mStart = start;
+	mEnd = Point(start.X, start.Y + 100);
 }
 
 /**
